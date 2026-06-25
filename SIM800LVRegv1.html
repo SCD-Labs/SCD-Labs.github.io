@@ -39,9 +39,11 @@
         /* Header Principale */
         header {
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
-            margin-bottom: 40px;
+            padding-bottom: 0px;
+            margin-bottom: 00px;
             text-align: center;
+            margin: 0px;
+            background-color: white;
         }
 
         header h1 {
@@ -54,6 +56,15 @@
             color: var(--text-muted);
             font-size: 1.1rem;
             margin-top: 5px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            color: #fff;
+            padding:0px;
+            height:105px;
         }
 
         /* Titolo del Prodotto */
@@ -90,6 +101,7 @@
             border: 1px solid var(--border-color);
             border-radius: 8px; /* Angoli arrotondati coordinati */
             padding: 30px;
+            text-align: justify;
         }
 
         .tech-card h3 {
@@ -99,6 +111,17 @@
             font-weight: 600;
             border-bottom: 1px solid rgba(48, 54, 61, 0.5);
             padding-bottom: 10px;
+        }
+
+        .card-img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+            display: block;
+            background-color: var(--bg-color);
         }
 
         p {
@@ -129,7 +152,7 @@
             color: #fff;
             font-weight: 600;
         }
-
+        
         /* Tabella interna a un riquadro */
         .table-container {
             overflow-x: auto;
@@ -184,6 +207,7 @@
         .compliance-card p {
             font-size: 0.95rem;
             color: var(--text-muted);
+            text-align: justify;
         }
 
         /* Footer */
@@ -207,47 +231,96 @@
 <div class="container">
 
     <header>
-        <h1>SCD Labs</h1>
+        <!-- h1>SCD Labs</h1> -->
+         <div class="logo"> <img src="logoScdLabs.png" alt="SCD Labs Logo" width="300"> </div>
         <p>Ingegneria hardware e sviluppo sistemi embedded di livello industriale</p>
     </header>
 
     <main>
-        <div class="product-title-area">
-            <span class="product-tag">Power Hardware Architecture</span>
+        <div class="product-title-area" style="border-top:1px solid gray; margin-top:5px;">
+            <span class="product-tag">Power Hardware Description</span>
             <h2>PWR-SIM800L-IND v1.0</h2>
+            <a href="SIM800LPowerSupplyEvaluationBoard1.0.pdf" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 15px; padding: 8px 16px; background-color: #21262d; color: var(--accent-blue); border: 1px solid var(--border-color); border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: 600; font-family: monospace; transition: background-color 0.2s;">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="position: relative; top: 1px;"><path d="M2.75 14A1.75 1.75 0 014.5 12.25h11a.75.75 0 01.75.75v1.25a.75.75 0 01-.75.75H4.5a.25.25 0 00-.25.25v.5a.75.75 0 01-1.5 0V14zm1.5-1.75h10.25v-11H4.5a1.75 1.75 0 00-1.75 1.75v7.5c0 .966.784 1.75 1.75 1.75zM11.75 6a.75.75 0 01-.75.75H6.75a.75.75 0 010-1.5h4.25a.75.75 0 01.75.75z"></path></svg>
+                Scarica il Datasheet (PDF)
+            </a>
         </div>
 
         <div class="vertical-cards-layout">
 
             <div class="tech-card">
                 <h3>Utilizzo e Applicazione</h3>
+                <img src="Images/SIMM800LVreg1.png" alt="PWR-SIM800L-IND Modulo di Alimentazione Alternativo" class="card-img">
                 <p>Il modulo cellulare SIM800L è ampiamente utilizzato in applicazioni di telemetria e controllo remoto, ma presenta una severa criticità elettrica: durante i picchi di trasmissione (*burst GSM*), il chip richiede impulsi di corrente improvvisi e molto intensi (fino a 2A). Se la linea di alimentazione non è perfettamente stabile e reattiva, si verificano inevitabili cadute di tensione che causano il riavvio continuo del modem o il blocco improvviso dell'intero impianto.</p>
                 <p><span class="highlight">PWR-SIM800L-IND</span> nasce esclusivamente per risolvere questo problema. È un modulo di alimentazione ingegnerizzato per interporsi tra la sorgente di energia principale e il modem GSM, garantendo un flusso di tensione lineare, privo di ripple e strutturato per assorbire istantaneamente qualsiasi transitorio di carico strutturale.</p>
             </div>
 
             <div class="tech-card">
-                <h3>Ingegnerizzazione del Layout e del PCB</h3>
-                <p>La durata e l'affidabilità di un circuito elettronico industriale dipendono direttamente dalla qualità del suo sbroglio meccanico ed elettrico. Nella progettazione di questo modulo non sono state utilizzate geometrie standard o minimaliste, preferendo un approccio orientato alla massima resilienza fisica:</p>
+                <h3>Ingegnerizzazione del Layout e Contenimento EMI</h3>
+                
+                <img src="pcb-layout-routing.jpg" alt="Dettaglio Sbroglio PCB e Cella a Pi-Greco PWR-SIM800L-IND" class="card-img">
+                
+                <p>La durata e l'affidabilità di un circuito elettronico industriale dipendono direttamente dalla qualità del suo sbroglio meccanico ed elettrico. Nella progettazione di questo modulo, ogni traccia è stata ottimizzata per abbattere le criticità ad alta frequenza e isolare i disturbi di commutazione:</p>
+                
+                <div style="background-color: rgba(88, 166, 255, 0.03); border: 1px solid rgba(88, 166, 255, 0.2); border-radius: 6px; padding: 20px; margin: 20px 0;">
+                    <p style="margin-bottom: 8px;"><strong style="color: var(--accent-blue); font-family: monospace;">IL FATTORE DIFFERENZIANTE: Filtro EMI a Pi-Greco (&pi;)</strong></p>
+                    <p style="font-size: 0.95rem; color: var(--text-main);">
+                        A differenza delle schede di fascia bassa (e di molti prodotti standard di mercato) che collegano direttamente la linea di alimentazione al carico, il PWR-SIM800L-IND integra un <span class="highlight">filtro EMI a pi-greco (&pi;-filter)</span> bidirezionale completo. Questa cella di filtraggio accoppia simmetricamente due stadi capacitivi a ridosso di un'induttanza di potenza su ferrite Würth Elektronik. 
+                    </p>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 8px; margin-bottom: 0;">
+                        Il filtro agisce in duplice modo: abbatte radicalmente il ripple residuo in ingresso e impedisce al rumore impulsivo ad alta frequenza (generato dai burst GSM a 217 Hz) di risalire la linea di alimentazione, proteggendo la logica di controllo principale (MCU, sensori) da anomalie o reset indotti da disturbi condotti.
+                    </p>
+                </div>
+
                 <ul>
-                    <li><span class="highlight">Piani di Massa Generosi:</span> Il layout utilizza piani di rame ad alta superficie sia sul livello top che sul bottom per ottimizzare la dissipazione termica del regolatore e schermare le piste di potenza da accoppiamenti d'onda o interferenze parassite.</li>
-                    <li><span class="highlight">Dimensionamento Maggiorato:</span> Tutte le piste di alimentazione e le piazzole dei componenti sono state fisicamente allargate rispetto alle specifiche teoriche minime. Questo riduce la resistenza parassita del rame, elimina i surriscaldamenti localizzati e prolunga drasticamente il ciclo di vita della scheda.</li>
-                    <li><span class="highlight">Rispetto delle Tolleranze:</span> La disposizione geometrica dei componenti è studiata per lasciare ampi margini di isolamento termico e fisico, garantendo che ogni parte lavori ben al di sotto dei propri limiti di stress elettrico e termico.</li>
+                    <li><span class="highlight">Riduzione di Induttanze e Capacità Parassite:</span> I percorsi di ritorno della corrente e le geometrie delle tracce di potenza sono stati ridotti al minimo indispensabile per prevenire ringing di tensione e minimizzare le reattanze parassite del circuito stampato durante i transitori veloci.</li>
+                    <li><span class="highlight">Piazzole di Disaccoppiamento RF per Frequenze GSM (Opzionali):</span> Il layout prevede la predisposizione di due piazzole d'ingombro addizionali posizionate strategicamente a ridosso del carico. L'utente ha la facoltà di installare due condensatori ceramici ultra-veloci (MLCC) di tipo <span class=highlight>NPO/COG</span> (package 0603/0805) calibrati sui rispettivi punti di autorisonanza: un valore indicativo di <span class=highlight>33 pF</span> per la portante a <span class=highlight>900 MHz</span> e di <span class=highlight>10 pF</span> per la banda a <span class=highlight>1800 MHz</span>. Questo stadio opzimento permette di azzerare i disturbi a radiofrequenza direttamente alla fonte, impedendo che le piste di potenza irraggino rumore elettromagnetico verso i circuiti logici adiacenti.</li>
+                    <li><span class="highlight">Piani di Massa Generosi:</span> Il layout utilizza piani di rame ad alta superficie sia sul livello top che sul bottom. Questa soluzione agisce come uno schermo elettrostatico continuo, stabilizza il potenziale di riferimento e ottimizza la dissipazione termica del regolatore, garantendo un'operatività costante ben al di sotto dei limiti di tolleranza termica dei componenti.</li>
                 </ul>
             </div>
 
             <div class="tech-card">
+                <h3>Struttura del Rame e Piano di Massa Inferiore</h3>
+                
+                <img src="pcb-bottom-copper.jpg" alt="Bottom Layer senza solder mask - SCD Labs" class="card-img">
+                
+                <p>La visualizzazione del rame sul livello inferiore (*Bottom Layer*) evidenzia un piano di riferimento solido e continuo, progettato per garantire una schermatura ottimale contro i disturbi accoppiati e una via di ritorno a bassissima impedenza per i forti transitori di corrente del modulo GSM.</p>
+                
+                <div class="alert-box" style="border-left-color: var(--accent-success); background-color: rgba(35, 134, 54, 0.02);">
+                    <p style="margin-bottom: 5px;"><strong style="color: var(--accent-success-text);">Ingegneria del Segnale - Focus sul Partitore:</strong></p>
+                    <p style="font-size: 0.95rem; margin-bottom: 0; color: var(--text-main);">
+                        Per preservare la massima precisione della tensione d'uscita, è stata isolata una specifica traccia di massa racchiusa in una zona di svuotamento (*island routing*). Questa soluzione scollega la massa di riferimento del partitore di regolazione dai flussi di corrente caotici del piano principale, convogliandola <span class="highlight">direttamente sul piedino del condensatore ai polimeri d'uscita</span>. In questo modo, il feedback legge il potenziale nel punto di massimo filtraggio, azzerando l'effetto dei disturbi di commutazione (*ground bounce*).
+                    </p>
+                </div>
+            </div>
+
+            <div class="tech-card">
                 <h3>Gestione dell'Energia e Capacità Esterna</h3>
-                <p>Il modulo integra già a bordo un primo stadio di accumulo con un condensatore di potenza dedicato per stabilizzare la tensione d'uscita. Tuttavia, per installazioni soggette a linee di alimentazione principali lunghe o per impieghi in zone con scarsa copertura di segnale (dove il modem è costretto a trasmettere alla massima potenza lineare), è consigliato aggiungere un ulteriore serbatoio capacitivo a ridosso del modulo.</p>
+                <p>Il modulo integra già a bordo uno stadio di accumulo ultra-reattivo basato su <span class="highlight">condensatori polarizzati ai polimeri solidi Panasonic</span>. Questa scelta progettuale si interpone come barriera fondamentale contro i repentini transitori di carico causati dal modem GSM.</p>
+                
+                <div style="background-color: rgba(48, 54, 61, 0.2); border: 1px solid var(--border-color); border-radius: 6px; padding: 20px; margin: 20px 0;">
+                    <p style="margin-bottom: 10px;"><strong style="color: var(--accent-blue); font-family: monospace;">ANALISI HARDWARE: Perché i Polimeri Solidi rispetto agli Elettrolitici?</strong></p>
+                    <p style="font-size: 0.95rem; color: var(--text-main); margin-bottom: 10px;">
+                        Sebbene l'adozione di condensatori ai polimeri solidi Panasonic comporti un costo di distinta base (BOM) nettamente superiore rispetto ai classici elettrolitici in alluminio, le loro caratteristiche intrinseche li rendono l'unica scelta accettabile per un'applicazione industriale permanente:
+                    </p>
+                    <ul style="margin-left: 15px; margin-bottom: 0; font-size: 0.95rem; color: var(--text-muted);">
+                        <li><span class="highlight">ESR nei Milliohm (Resistenza Seriale Equivalente):</span> I polimeri solidi offrono un'ESR drasticamente inferiore rispetto agli elettrolitici liquidi. Questo permette al condensatore di scaricare la corrente necessaria per i burst da 2A del SIM800L in modo istantaneo, azzerando le cadute di tensione locali che causano i riavvii del firmware.</li>
+                        <li><span class="highlight">Immunità all'Asciugamento (Dry-out):</span> I condensatori tradizionali contengono un elettrolita liquido che, con il passare degli anni e il calore operativo, evapora inevitabilmente provocando il fallimento della scheda. Nei polimeri solidi l'elettrolita è un materiale conduttivo solido: non c'è liquido che possa evaporare, garantendo un'aspettativa di vita operativa virtualmente illimitata.</li>
+                        <li><span class="highlight">Stabilità Termica Assoluta:</span> Al diminuire della temperatura, i condensatori elettrolitici standard subiscono un crollo della capacità e un aumento verticale dell'ESR. La tecnologia Panasonic mantiene invece prestazioni stabili da -55°C a +105°C, rendendo il modulo ideale per installazioni IoT esposte ad ambienti esterni severi.</li>
+                    </ul>
+                </div>
+
+                <p>Per installazioni soggette a linee di alimentazione principali particolarmente lunghe o per impieghi in zone con scarsa copertura di segnale (dove il modem è costretto a trasmettere alla massima potenza RF), rimane comunque consigliato prevedere un ulteriore serbatoio capacitivo a ridosso del modulo.</p>
                 
                 <div class="alert-box">
                     <p style="margin-bottom: 5px;"><strong style="color: #fff;">💡 Raccomandazione di Progetto:</strong></p>
-                    <p style="font-size: 0.95rem; margin-bottom: 0;">Si consiglia il posizionamento in parallelo di un condensatore elettrolitico addizionale con una capacità compresa tra <span class="highlight">470 µF e 1000 µF (Low-ESR)</span>, avente una tensione nominale di almeno 6.3V o superiore. Questo elemento agisce come riserva energetica rapida a supporto dei transitori più gravosi.</p>
+                    <p style="font-size: 0.95rem; margin-bottom: 0;">Si consiglia il posizionamento in parallelo di un condensatore elettrolitico addizionale con una capacità compresa tra <span class="highlight">470 µF e 1000 µF (Low-ESR)</span>, o idealmente un ulteriore elemento ai polimeri solidi da almeno 6.3V. Questo componente agisce come riserva energetica rapida di supporto per assorbire completamente il ripple residuo durante i burst GSM.</p>
                 </div>
             </div>
 
             <div class="tech-card">
                 <h3>Selezione della Componentistica</h3>
-                <p>Per mantenere un profilo qualitativo industriale, la selezione dei componenti interni è stata rigorosamente limitata a produttori leader del mercato globale, escludendo parti commerciali generiche:</p>
+                <p>Per mantenere un profilo qualitativo industriale e preservare la massima aspettativa di vita del modulo, la selezione dei componenti interni è stata rigorosamente limitata a produttori leader del mercato globale, escludendo parti commerciali generiche:</p>
 
                 <div class="table-container">
                     <table>
@@ -266,13 +339,24 @@
                             </tr>
                             <tr>
                                 <td><strong>Stadio Capacitivo Nativo</strong></td>
-                                <td>Condensatori a bassissima resistenza interna (Panasonic)</td>
-                                <td>Risposta immediata ai transitori di corrente e costanza delle prestazioni nel tempo.</td>
+                                <td><strong>Condensatori polarizzati ai polimeri solidi Panasonic di alta qualità</strong></td>
+                                <td>ESR estremamente basso, assenza di degrado o asciugatura nel tempo, e stabilità termica assoluta nei transitori rapidi.</td>
                             </tr>
                             <tr>
-                                <td><strong>Integrità Strutturale</strong></td>
-                                <td>PCB con rame a spessore maggiorato</td>
-                                <td>Abbattimento delle resistenze e massima conducibilità termica ed elettrica complessiva.</td>
+                                <td><strong>Filtraggio di Rete</strong></td>
+                                <td><strong>Filtro EMI a Pi-greco (&pi;)</strong> con ferriti di potenza (Würth Elektronik) e condensatori coordinati</td>
+                                <td>Configurazione a bassissimo passaggio di rumore. Abbattimento mirato delle emissioni condotte ad alta frequenza e isolamento totale della linea di alimentazione principale.</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Interfaccia di Alimentazione</strong></td>
+                                <td>Morsettiere e connettori ad alta tenuta meccanica (Phoenix Contact)</td>
+                                <td>Contatto elettrico a bassissima resistenza di sfilamento, ideale per cablaggi industriali sicuri.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ingresso Ausiliario 5V</strong></td>
+                                <td>Connettore d'interfaccia USB-C schermato (Molex)</td>
+                                <td>Robustezza strutturale superiore alle sollecitazioni meccaniche di inserimento e ottima continuità di massa.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -282,7 +366,6 @@
             <div class="tech-card compliance-card">
                 <h3>Environmental Compliance & Sostenibilità</h3>
                 <p>La scheda di valutazione PWR-SIM800L-IND è stata progettata utilizzando componenti e materiali specificati dai rispettivi produttori come conformi alla Direttiva 2011/65/UE (RoHS) e ai suoi successivi emendamenti.</p>
-                <p style="margin-top: 10px;">In base alle dichiarazioni sui componenti disponibili al momento della progettazione, la scheda è intesa a soddisfare le restrizioni sulle sostanze definite dalla Direttiva RoHS per piombo, mercurio, cadmio, cromo esavalente, bifenili polibromurati (PBB), eteri di difenile polibromurato (PBDE) e altre sostanze soggette a restrizioni.</p>
                 <p style="margin-top: 10px; font-style: italic;">Gli utenti che integrano questa scheda in prodotti commerciali rimangono responsabili della verifica della piena conformità normativa del prodotto finale assemblato.</p>
             </div>
 
